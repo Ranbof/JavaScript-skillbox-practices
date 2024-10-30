@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src = "index.js"></script>
+</head>
+<body>
+    <h1>Каталог товаров</h1>
+    <ul id="product-list">
+    <li>
+    <span class = "product">Товар 1</span>
+    <button onclick="addToCart('Товар 1')">Добавить в корзину</button>
+    </li>
+    <li>
+    <span class = "product">Товар 2</span>
+    <button onclick="addToCart('Товар 2')">Добавить в корзину</button>
+    </li>
+    <li>
+    <span class = "product">Товар 3</span>
+    <button onclick="addToCart('Товар 3')">Добавить в корзину</button>
+    </li>
+    </ul>
+    <h1>Корзина</h1>
+    <ul id="cart">
+    </ul>
+    <script>
+        const productsEl = document.querySelector("#product-list")
+        const cartEl = document.querySelector("#cart")
+        const productEl = document.querySelector(".product")
+        let count = 0
+            
+        function addToCart(text){
+            if (count < 3){
+                const liEl = document.createElement('li')
+                cartEl.append(liEl)
+                liEl.textContent = text
+                count++
+            }
+        }
+    </script>
+</body>
+</html>

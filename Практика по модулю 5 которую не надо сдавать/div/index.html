@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class = "content"></div>
+    <script> 
+        const contentEl = document.querySelector('.content')
+        const h2EL = document.createElement('h2')
+        const pEL = document.createElement('p')
+        contentEl.append(h2EL)
+        contentEl.prepend(pEL)
+
+        h2EL.textContent = "Название статьи"
+        pEL.textContent = 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Porro repellat temporibus, ex odit id dolor earum accusamus sequi impedit iure asperiores autem cupiditate aliquam tempora dicta velit fugit odio debitis!';
+        contentEl.appendChild(h2EL);
+        contentEl.appendChild(pEL);
+    </script>
+</body>
+</html>
