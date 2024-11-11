@@ -1,0 +1,18 @@
+h1{
+    font-weight: 600;
+}
+
+ul, li{
+    font-weight: 300;
+}
+
+button{
+    border: none;
+}
+
+#add-product{
+    background-color: green;
+    color: white;
+    height: 45px;
+    border-radius: 7px;
+}

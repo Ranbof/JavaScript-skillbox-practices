@@ -1,0 +1,27 @@
+h1{
+    font-weight: 600;
+}
+
+ul, li{
+    font-weight: 300;
+}
+
+button{
+    border: none;
+}
+
+#add-book{
+    background-color: green;
+    color: white;
+    height: 45px;
+    border-radius: 7px;
+}
+
+
+#search-book{
+    background-color: blue;
+    color: white;
+    height: 45px;
+    width: 65px;
+    border-radius: 7px;
+}
