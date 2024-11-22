@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Document</title>
+
+    <script src = "index.js"></script>
+  </head>
+  <body>
+    <div class = "smallImages">
+      <img class = "strangeCat img" src = "cat.jpg" alt = "" />
+      <img class = "whiteCat img" src = "adorable-kitty-with-monochrome-wall-her.jpg" alt = "" />
+      <img class = "greyCat img" src = "gray-kitty-with-monochrome-wall-her.jpg" alt = "" />
+    </div>
+    <div class = "currentImage"></div>
+    <script>
+      const catPhotos = document.querySelectorAll(".img")
+      const currentPhoto = document.querySelector(".currentImage")
+      catPhotos.forEach((catPhoto) => {
+        catPhoto.addEventListener("click", () => {
+          const url = catPhoto.src
+          currentPhoto.innerHTML = `<img src = "${url}" alt = "Large Image" style = "width: 50%; height: 50%;">`
+        })
+      })
+    </script>
+  </body>
+</html>
