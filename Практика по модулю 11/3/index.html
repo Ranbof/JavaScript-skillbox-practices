@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<h1> Настройка оформления банковской карты</h1>
+
+<label for="card-text">Введите текст на карте:</label>
+<input type="text" id="card-text" placeholder="Ваш текст здесь">
+
+<label for="card-color">Выберите цвет карты:</label>
+<select id="card-color">
+    <option value="red">Красный</option>
+    <option value="blue">Синий</option>
+    <option value="green">Зеленый</option>
+</select>
+
+<p id="card">Ваш текст здесь</p>
+
+<script>
+    const cardTextInput = document.getElementById('card-text');
+    const cardColorSelect = document.getElementById('card-color');
+    const cardDisplay = document.getElementById('card');
+
+    // Слушатель события input для обновления текста на карте
+    cardTextInput.addEventListener('input', function() {
+        cardDisplay.textContent = this.value || 'Ваш текст здесь'; // Устанавливаем текст или показываем плейсхолдер
+    });
+
+    // Слушатель события focus для изменения стиля input
+    cardTextInput.addEventListener('focus', function() {
+        this.style.borderColor = 'blue';
+        this.style.backgroundColor = '#e0f7fa';
+    });
+
+    // Слушатель события blur для возврата стиля input
+    cardTextInput.addEventListener('blur', function() {
+        this.style.borderColor = '';
+        this.style.backgroundColor = '';
+    });
+
+    // Слушатель события change для изменения цвета карты
+    cardColorSelect.addEventListener('change', function() {
+        cardDisplay.style.backgroundColor = this.value;
+    });
+</script>
+
+</body>
+</html>

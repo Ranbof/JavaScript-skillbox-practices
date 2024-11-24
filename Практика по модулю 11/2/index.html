@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<h1>Калькулятор стоимости доставки</h1>
+
+<form id="product-form">
+    <label for="product-name">Название товара:</label>
+    <input type="text" id="product-name" required>
+    <span class="error" id="name-error"></span><br><br>
+
+    <label for="product-weight">Вес товара (кг):</label>
+    <input type="number" id="product-weight" min="0" required>
+    <span class="error" id="weight-error"></span><br><br>
+
+    <label for="delivery-distance">Расстояние доставки (км):</label>
+    <input type="number" id="delivery-distance" min="0" required>
+    <span class="error" id="distance-error"></span><br><br>
+
+    <button type="submit">Добавить товар</button>
+</form>
+
+<table class="product-table">
+    <thead>
+        <tr>
+            <th>Название товара</th>
+            <th>Вес (кг)</th>
+            <th>Расстояние (км)</th>
+            <th>Стоимость доставки</th>
+        </tr>
+    </thead>
+    <tbody id="product-list">
+    </tbody>
+</table>
+<script>
+  document.getElementById('product-form').addEventListener('submit', function(event) {
+      event.preventDefault()
+
+      document.getElementById('name-error').innerText = ''
+      document.getElementById('weight-error').innerText = ''
+      document.getElementById('distance-error').innerText = ''
+
+      const productName = document.getElementById('product-name').value.trim()
+      const productWeight = parseFloat(document.getElementById('product-weight').value)
+      const deliveryDistance = parseFloat(document.getElementById('delivery-distance').value)
+
+
+      let hasError = false
+
+      if (!productName) {
+          document.getElementById('name-error').innerText = 'Введите название товара.'
+          hasError = true
+      }
+
+      if (isNaN(productWeight) || productWeight <= 0) {
+          document.getElementById('weight-error').innerText = 'Введите корректный вес товара (положительное число).'
+          hasError = true
+      }
+
+      if (isNaN(deliveryDistance) || deliveryDistance <= 0) {
+          document.getElementById('distance-error').innerText = 'Введите корректное расстояние доставки (положительное число).'
+          hasError = true
+      }
+
+      if (hasError) return
+
+      const deliveryCost = (productWeight * deliveryDistance) / 10
+
+
+      const productList = document.getElementById('product-list')
+      const newRow = productList.insertRow()
+      newRow.innerHTML = `
+          <td>${productName}</td>
+          <td>${productWeight.toFixed(2)}</td>
+          <td>${deliveryDistance.toFixed(2)}</td>
+          <td>${deliveryCost.toFixed(2)}</td>
+      `
+
+      document.getElementById('product-form').reset()
+  })
+</script>
+
+</body>
+</html>

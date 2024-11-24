@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<h1>Форма опроса</h1>
+<form id="surveyForm">
+    <label for="name">Имя пользователя:</label>
+    <input type="text" id="name" name="name" required><br />
+    <span class="error" id="nameError"></span><br />
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required><br />
+    <span class="error" id="emailError"></span><br />
+
+    <label>Пол:</label>
+      <input type="radio" name="gender" value="Мужской" /> Мужской
+      <input type="radio" name="gender" value="Женский" /> Женский<br /><br />
+
+
+    <label for="rating">Оценка сервиса (1-10):</label>
+      <input type="range" id="rating" name="rating" min="1" max="10" value="5" oninput="this.nextElementSibling.value = this.value">
+      <output>5</output><br /><br />
+
+    <label>Интересы пользователя:</label>
+      <input type="checkbox" name="interests" value="Спорт" /> Спорт<br />
+      <input type="checkbox" name="interests" value="Музыка" /> Музыка<br />
+      <input type="checkbox" name="interests" value="Путешествия" />
+      Путешествия<br />
+      <input type="checkbox" name="interests" value="Кино" /> Кино<br /><br />
+    <label for="comments">Дополнительные комментарии:</label>
+    <textarea id="comments" name="comments"></textarea>
+
+    <button type="submit">Отправить</button>
+</form>
+<div id="result"></div>
+
+<script>
+    document.getElementById('surveyForm').addEventListener('submit', function(event) {
+        event.preventDefault()
+
+        let isValid = true
+        const name = document.getElementById('name').value
+        const email = document.getElementById('email').value
+        const gender = document.querySelector('input[name="gender"]:checked')
+
+        document.getElementById('nameError').textContent = ''
+        document.getElementById('emailError').textContent = ''
+
+        if (!name) {
+            document.getElementById('nameError').textContent = 'Имя обязательно для заполнения.'
+            isValid = false
+        }
+
+        if (!email) {
+            document.getElementById('emailError').textContent = 'Email обязателен для заполнения.'
+            isValid = false
+        } else {
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+            if (!emailPattern.test(email)) {
+                document.getElementById('emailError').textContent = 'Введите корректный email.'
+                isValid = false
+            }
+        }
+
+        if (!gender) {
+            alert('Выберите пол.')
+            isValid = false
+        }
+
+        if (isValid) {
+            const rating = document.getElementById('rating').value
+            const interests = Array.from(document.querySelectorAll('input[name="interests"]:checked'))
+                                   .map(el => el.value)
+            const comments = document.getElementById('comments').value
+
+            // Отображение результатов
+            const resultDiv = document.getElementById('result')
+            resultDiv.innerHTML = `
+                <h2>Результаты опроса:</h2>
+                <p><strong>Имя:</strong> ${name}</p>
+                <p><strong>Email:</strong> ${email}</p>
+                <p><strong>Пол:</strong> ${gender.value}</p>
+                <p><strong>Оценка сервиса:</strong> ${rating}</p>
+                <p><strong>Интересы:</strong> ${interests.join(', ') || 'Нет'}</p>
+                <p><strong>Комментарии:</strong> ${comments || 'Нет'}</p>
+            `
+        }
+    })
+</script>
+
+</body>
+</html>
