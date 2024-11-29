@@ -1,0 +1,113 @@
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #e9ecef;
+  padding: 30px;
+  color: #343a40;
+}
+
+form {
+  background-color: #ffffff;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+form label, input, select {
+  display: block;
+  font-weight: bold;
+}
+
+.submit {
+  background-color: #333; 
+  color: white; 
+  padding: 10px 20px; 
+  border: none; 
+  font-size: 16px; 
+  font-weight: bold;
+  cursor: pointer; 
+  border-radius: 5px; 
+  width: 100%;
+}
+
+#isWatched {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+#filter-form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+#filter-form label {
+  margin-right: 10px;
+}
+
+#filter-form input[type="text"], 
+#filter-form select {
+  margin-right: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ced4da;
+  transition: border-color 0.3s;
+}
+
+#filter-form input[type="text"]:focus, 
+#filter-form select:focus {
+  outline: none;
+}
+
+#clear-all-button {
+  background-color: #ff0000;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: block;
+  margin-left: auto; 
+  margin-right: 0; 
+}
+
+#clear-all-button:hover {
+  background-color: #b30000;
+}
+
+table {
+  width: 100%;
+  background-color: #fff;
+  text-align: left;
+  border-collapse: collapse;
+  box-shadow: 0px 0px 5px #999;
+}
+
+th,
+td {
+  padding: 15px;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #333;
+  color: #fff;
+}
+
+td {
+  vertical-align: top;
+}
+
+.delete-button {
+  background-color: red; 
+  color: white; 
+  border: none; 
+  padding: 5px 10px; 
+  cursor: pointer; 
+  border-radius: 5px; /
+}
+
+.delete-button:hover {
+  background-color: darkred;
+}
